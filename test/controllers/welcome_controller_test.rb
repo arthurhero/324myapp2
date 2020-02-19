@@ -15,4 +15,11 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
     get welcome_story_url
     assert_response :success
   end
+
+  test "should get random number" do
+    get welcome_index_url
+    ln=assigns[:lucky_num]
+    assert_instance_of(Integer,ln)
+    assert(ln>=0 && ln<10)
+  end
 end
