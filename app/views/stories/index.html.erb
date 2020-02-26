@@ -12,6 +12,7 @@
 </div>
 
 <% counter=1 %>
+<% if @stories.any? %>
 <% @stories.each do |story| %>
     <h3>Chapter <%= counter %></h3>
     <div class='story'>
@@ -19,6 +20,7 @@
     <p class='author'><b>Author: </b><%= story.author %></p>
     </div>
     <% counter+=1 %>
+<% end %>
 <% end %>
 
 <div class='form'>
