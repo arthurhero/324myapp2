@@ -1,0 +1,37 @@
+<% provide(:title, "Story Board") %>
+
+<%= stylesheet_link_tag 'stories'%>
+<h1>Z's Story Board</h1>
+
+<div id="flash">
+  <% flash.each do |key, value| %>
+    <div class='flash <%= key %>'>
+      <%= value %>
+    </div>
+  <% end %>
+</div>
+
+<% counter=1 %>
+<% @stories.each do |story| %>
+    <h3>Chapter <%= counter %></h3>
+    <div class='story'>
+    <p class='text'><%= story.story %></p>
+    <p class='author'><b>Author: </b><%= story.author %></p>
+    </div>
+    <% counter+=1 %>
+<% end %>
+
+<div class='form'>
+<%= form_for :story, :url => { :action => "create" }, :html => {:class => "story_form"} do |f| %>
+    Story:</br>
+    <%= f.text_area :text, :class => "text" %> </br>
+  Author:
+  <%= f.text_field :author, :class => "author" %> </br>
+  <%= submit_tag "Create Next Chapter", :class => "button" %>
+<% end %>
+<div>
+<% if @check_error and @author_errors.any? %>
+  <% @author_errors.each do |error_message| %>
+    <%= error_message %> <br/>
+  <% end %>
+<% end %>
