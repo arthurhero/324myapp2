@@ -18,6 +18,7 @@
     <div class='story'>
     <p class='text'><%= story.story %></p>
     <p class='author'><b>Author: </b><%= story.author %></p>
+    <p class='delete'><%= link_to("DELETE", '/stories/'+story.id.to_s, :method => :delete)%></p>
     </div>
     <% counter+=1 %>
 <% end %>

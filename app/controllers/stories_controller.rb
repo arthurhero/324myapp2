@@ -26,4 +26,11 @@ class StoriesController < ApplicationController
         @story.save
         redirect_to '/stories'
     end
+
+    def delete
+        id=params[:id]
+        Story.destroy(id)
+        redirect_to '/stories'
+    end
+
 end
